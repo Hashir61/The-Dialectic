@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+{% include head.html %}
+</head>
+<body class="{% if page.layout == 'home' %}is-home{% else %}is-inner{% endif %}" data-search-index="{{ '/search.json' | relative_url }}">
+<a class="skip-link" href="#main">Skip to content</a>
+{% include header.html %}
+<main id="main" tabindex="-1">
+{{ content }}
+</main>
+{% include footer.html %}
+</body>
+</html>

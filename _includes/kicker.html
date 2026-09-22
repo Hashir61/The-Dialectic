@@ -1,0 +1,5 @@
+{%- comment -%} Usage: {% include kicker.html post=post %} — linked section name above a headline {%- endcomment -%}
+{%- if include.post.categories.size > 0 -%}
+{%- assign _k = include.post.categories.first | downcase -%}
+<p class="kicker"><a href="{{ '/' | append: _k | append: '/' | relative_url }}">{% include section-name.html post=include.post %}</a></p>
+{%- endif -%}

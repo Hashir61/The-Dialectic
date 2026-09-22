@@ -1,0 +1,43 @@
+# The sections of the journal.
+# "slug" is what you type after `category:` at the top of an essay (always lowercase).
+# To add a section: add an entry here AND copy one of the files in /pages/sections/,
+# changing its `section:` and `permalink:` to the new slug.
+#
+# hero_image / hero_alt / hero_credit set the banner photo at the top of that
+# section's page. To change one, replace the file in assets/img/sections/
+# (keep the same file name) or point hero_image at a new path.
+
+- slug: politics
+  name: Politics
+  description: Power, institutions, law and the arguments over how people should be governed.
+  hero_image: /assets/img/sections/politics.jpg
+  hero_alt: Jacques-Louis David, The Lictors Bring to Brutus the Bodies of His Sons
+  hero_credit: Jacques-Louis David, The Lictors Bring to Brutus the Bodies of His Sons, 1789
+
+- slug: philosophy
+  name: Philosophy
+  description: An inquiry into existence, knowledge and morality — ontology, epistemology, metaphysics and ethics bent into one question.
+  hero_image: /assets/img/sections/philosophy.jpg
+  hero_alt: Raphael, The School of Athens
+  hero_credit: Raphael, The School of Athens, 1511
+
+- slug: history
+  name: History
+  description: Empires, revolutions, ideas and the people who lived through them.
+  hero_image: /assets/img/sections/history.jpg
+  hero_alt: Jacques-Louis David, The Coronation of Napoleon
+  hero_credit: Jacques-Louis David, The Coronation of Napoleon, 1807
+
+- slug: cosmology
+  name: Cosmology
+  description: The origin, scale and fate of the universe, and our small place within it.
+  hero_image: /assets/img/sections/cosmology.jpg
+  hero_alt: A dense field of stars against the night sky
+  hero_credit: Photo credit pending — confirm source before publishing
+
+- slug: literature
+  name: Literature
+  description: Novels, poetry, drama and criticism, read closely.
+  hero_image: /assets/img/sections/literature.jpg
+  hero_alt: Arnold Böcklin, Isle of the Dead
+  hero_credit: Arnold Böcklin, Isle of the Dead, 1883

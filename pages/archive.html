@@ -1,0 +1,32 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+description: Every essay, newest first.
+---
+{%- assign total = site.posts | size -%}
+<header class="page-head wrap">
+  <h1 class="page-title display">Archive</h1>
+  <p class="page-dek">Every essay, newest first.</p>
+  <p class="page-count">{% if total == 1 %}1 essay{% else %}{{ total }} essays{% endif %}</p>
+</header>
+<div class="list wrap">
+  {%- if total == 0 %}
+  <div class="empty-state">
+    <p class="empty-lead">The archive is empty for now.</p>
+    <p>Published essays will be collected here by year.</p>
+  </div>
+  {%- else %}
+  {%- assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" %}
+  {%- for y in years %}
+  <section class="year" aria-labelledby="y{{ y.name }}">
+    <h2 class="year-title" id="y{{ y.name }}">{{ y.name }}</h2>
+    <ol class="rows">
+      {%- for p in y.items %}
+      <li>{% include card-row.html post=p %}</li>
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endfor %}
+  {%- endif %}
+</div>

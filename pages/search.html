@@ -1,0 +1,20 @@
+---
+layout: default
+title: Search
+permalink: /search/
+description: Search every essay by title, section or text.
+sitemap: false
+---
+<header class="page-head wrap">
+  <h1 class="page-title display">Search</h1>
+  <form class="search-form" action="{{ '/search/' | relative_url }}" method="get" role="search">
+    <label class="visually-hidden" for="q">Search essays</label>
+    <input id="q" name="q" type="search" placeholder="Search by title, section or phrase" autocomplete="off" spellcheck="false" data-search-input>
+    <button type="submit">Search</button>
+  </form>
+  <p class="search-status" role="status" aria-live="polite" data-search-status></p>
+</header>
+<div class="list wrap">
+  <ol class="rows" data-search-results></ol>
+</div>
+<noscript><p class="wrap">Search needs JavaScript. You can browse every essay in the <a href="{{ '/archive/' | relative_url }}">archive</a>.</p></noscript>

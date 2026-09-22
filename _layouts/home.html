@@ -1,0 +1,97 @@
+---
+layout: default
+---
+{%- assign total = site.posts | size -%}
+{%- assign featured = site.posts | where: "featured", true | first -%}
+{%- if featured -%}{%- assign lead = featured -%}{%- else -%}{%- assign lead = site.posts.first -%}{%- endif -%}
+
+<section class="hero" aria-labelledby="nameplate">
+  <img class="hero-art" src="{{ site.hero.image | default: '/assets/img/hero.jpg' | relative_url }}" alt="{{ site.hero.alt | escape }}" width="960" height="1280" fetchpriority="high">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-inner wrap">
+    <h1 class="nameplate" id="nameplate">{{ site.title }}</h1>
+    <p class="tagline">{{ site.tagline }}</p>
+  </div>
+  {%- if site.hero.credit %}<p class="hero-credit">{{ site.hero.credit | escape }}</p>{% endif %}
+</section>
+
+<section class="latest wrap" aria-labelledby="latest-title">
+  <h2 class="block-title" id="latest-title">Latest</h2>
+  {%- if total == 0 %}
+  <div class="empty-state">
+    <p class="empty-lead">No essays have been published yet.</p>
+    <p>New writing on politics, philosophy, history, cosmology and literature will appear here. You can follow along with the <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a>.</p>
+  </div>
+  {%- else %}
+  <div class="latest-grid{% if total == 1 %} is-single{% endif %}">
+    <article class="lead">
+      {%- if lead.image %}
+      <a class="lead-figure" href="{{ lead.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ lead.image | relative_url }}" alt="" decoding="async"></a>
+      {%- endif %}
+      {% include kicker.html post=lead %}
+      <h3 class="lead-title"><a href="{{ lead.url | relative_url }}">{{ lead.title | escape }}</a></h3>
+      <p class="dek lead-dek">{% include dek.html post=lead words=45 %}</p>
+      {%- if lead.subtitle and lead.image == nil %}
+      <p class="lead-excerpt">{{ lead.excerpt | strip_html | normalize_whitespace | truncatewords: 70 }}</p>
+      {%- endif %}
+      <p class="byline">By {{ lead.author | default: site.author.name }}</p>
+      {% include meta.html post=lead %}
+    </article>
+    {%- if total > 1 %}
+    <div class="also">
+      <ol class="also-list">
+        {%- assign shown = 0 -%}
+        {%- for p in site.posts -%}
+          {%- if p.url == lead.url -%}{%- continue -%}{%- endif -%}
+          {%- if shown >= 5 -%}{%- break -%}{%- endif -%}
+          {%- assign shown = shown | plus: 1 %}
+        <li>
+          <article class="also-item">
+            {% include kicker.html post=p %}
+            <h3 class="also-title"><a href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></h3>
+            {% include meta.html post=p %}
+          </article>
+        </li>
+        {%- endfor %}
+      </ol>
+      {%- if total > 6 %}<p class="more-link"><a href="{{ '/archive/' | relative_url }}">See all {{ total }} essays in the archive</a></p>{% endif %}
+    </div>
+    {%- endif %}
+  </div>
+  {%- endif %}
+</section>
+
+<section class="contents wrap" aria-labelledby="contents-title">
+  <h2 class="block-title" id="contents-title">Contents</h2>
+  <div class="contents-grid">
+    {%- for s in site.data.sections %}
+    {%- assign count = 0 -%}
+    {%- for p in site.posts -%}{%- assign c = p.categories.first | downcase -%}{%- if c == s.slug -%}{%- assign count = count | plus: 1 -%}{%- endif -%}{%- endfor %}
+    <section class="toc-section" aria-labelledby="toc-{{ s.slug }}">
+      <h3 class="toc-name" id="toc-{{ s.slug }}"><a href="{{ '/' | append: s.slug | append: '/' | relative_url }}">{{ s.name }}</a></h3>
+      <p class="toc-desc">{{ s.description }}</p>
+      {%- if count == 0 %}
+      <p class="toc-empty">No essays in this section yet.</p>
+      {%- else %}
+      <ul class="toc">
+        {%- assign listed = 0 -%}
+        {%- for p in site.posts -%}
+          {%- assign c = p.categories.first | downcase -%}
+          {%- if c != s.slug -%}{%- continue -%}{%- endif -%}
+          {%- if listed >= 4 -%}{%- break -%}{%- endif -%}
+          {%- assign listed = listed | plus: 1 %}
+        <li><a href="{{ p.url | relative_url }}"><span class="toc-title">{{ p.title | escape }}</span><span class="leader" aria-hidden="true"></span><time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%-d %b" }}</time></a></li>
+        {%- endfor %}
+      </ul>
+      {%- if count > 4 %}<p class="more-link"><a href="{{ '/' | append: s.slug | append: '/' | relative_url }}">All {{ count }} {{ s.name }} essays</a></p>{% endif %}
+      {%- endif %}
+    </section>
+    {%- endfor %}
+    {%- if site.quote.text %}
+    <figure class="toc-quote">
+      <blockquote><p>{{ site.quote.text }}</p></blockquote>
+      {%- if site.quote.source %}<figcaption>{{ site.quote.source }}</figcaption>{% endif %}
+    </figure>
+    {%- endif %}
+  </div>
+</section>

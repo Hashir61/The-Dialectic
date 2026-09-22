@@ -1,0 +1,42 @@
+---
+layout: default
+---
+{%- assign sec = site.data.sections | where: "slug", page.section | first -%}
+{%- assign count = 0 -%}
+{%- for p in site.posts -%}{%- assign c = p.categories.first | downcase -%}{%- if c == page.section -%}{%- assign count = count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+
+{%- if sec.hero_image %}
+<section class="section-hero">
+  <img class="section-hero-art" src="{{ sec.hero_image | relative_url }}" alt="{{ sec.hero_alt | escape }}">
+  <div class="section-hero-scrim" aria-hidden="true"></div>
+  <div class="section-hero-inner wrap">
+    <h1 class="section-hero-title">{{ sec.name | default: page.title }}</h1>
+    <p class="section-hero-dek">{{ sec.description }}</p>
+  </div>
+  {%- if sec.hero_credit %}<p class="section-hero-credit">{{ sec.hero_credit | escape }}</p>{% endif %}
+</section>
+<p class="page-count wrap section-count">{% if count == 1 %}1 essay{% else %}{{ count }} essays{% endif %}</p>
+{%- else %}
+<header class="page-head wrap">
+  <h1 class="page-title display">{{ sec.name | default: page.title }}</h1>
+  <p class="page-dek">{{ sec.description }}</p>
+  <p class="page-count">{% if count == 1 %}1 essay{% else %}{{ count }} essays{% endif %}</p>
+</header>
+{%- endif %}
+
+<div class="list wrap">
+  {%- if count == 0 %}
+  <div class="empty-state">
+    <p class="empty-lead">No {{ sec.name }} essays yet.</p>
+    <p>Essays in this section will be listed here, newest first. Meanwhile, browse the <a href="{{ '/archive/' | relative_url }}">archive</a>.</p>
+  </div>
+  {%- else %}
+  <ol class="rows">
+    {%- for p in site.posts -%}
+      {%- assign c = p.categories.first | downcase -%}
+      {%- if c != page.section -%}{%- continue -%}{%- endif %}
+    <li>{% include card-row.html post=p hide_kicker=true %}</li>
+    {%- endfor %}
+  </ol>
+  {%- endif %}
+</div>

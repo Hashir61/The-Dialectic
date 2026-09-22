@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article class="plain-page">
+  <header class="page-head wrap-text">
+    <h1 class="page-title display">{{ page.title | escape }}</h1>
+    {%- if page.subtitle %}<p class="page-dek">{{ page.subtitle | escape }}</p>{% endif %}
+  </header>
+  <div class="prose no-dropcap wrap-text">
+    {{ content }}
+  </div>
+</article>

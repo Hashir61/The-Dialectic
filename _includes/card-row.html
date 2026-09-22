@@ -1,0 +1,13 @@
+{%- comment -%} A single essay as a list row: used on section, archive and search pages {%- endcomment -%}
+{%- assign p = include.post -%}
+<article class="row{% if p.image %} has-thumb{% endif %}">
+  <div class="row-text">
+    {% unless include.hide_kicker %}{% include kicker.html post=p %}{% endunless %}
+    <h2 class="row-title"><a href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></h2>
+    <p class="dek">{% include dek.html post=p words=36 %}</p>
+    {% include meta.html post=p %}
+  </div>
+  {%- if p.image %}
+  <a class="row-thumb" href="{{ p.url | relative_url }}" tabindex="-1" aria-hidden="true"><img src="{{ p.image | relative_url }}" alt="" loading="lazy" decoding="async"></a>
+  {%- endif %}
+</article>

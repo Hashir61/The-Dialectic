@@ -1,0 +1,36 @@
+{%- if page.section -%}
+  {%- assign current = page.section -%}
+{%- elsif page.categories and page.categories.size > 0 -%}
+  {%- assign current = page.categories.first | downcase -%}
+{%- else -%}
+  {%- assign current = "" -%}
+{%- endif -%}
+<header class="site-header" data-header>
+  <div class="bar wrap">
+    <a class="brand" href="{{ '/' | relative_url }}"{% if page.layout == 'home' %} data-brand-hidden{% endif %}>{{ site.title }}</a>
+    <nav class="primary-nav" id="primary-nav" aria-label="Sections">
+      <ul>
+        {%- for s in site.data.sections %}
+        <li><a href="{{ '/' | append: s.slug | append: '/' | relative_url }}"{% if current == s.slug %} aria-current="page"{% endif %}>{{ s.name }}</a></li>
+        {%- endfor %}
+        <li class="nav-secondary"><a href="{{ '/archive/' | relative_url }}"{% if page.url == '/archive/' %} aria-current="page"{% endif %}>Archive</a></li>
+        <li class="nav-secondary"><a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a></li>
+      </ul>
+    </nav>
+    <div class="bar-tools">
+      <a class="icon-btn" href="{{ '/search/' | relative_url }}" aria-label="Search">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch colour theme">
+        <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-nav">
+        <span class="menu-label">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+{%- unless page.layout == 'home' or page.layout == 'section' %}
+<div class="dusk-band" aria-hidden="true">{% include skyline.svg id="top" %}</div>
+{%- endunless %}

@@ -1,0 +1,83 @@
+# ──────────────────────────────────────────────────────────────
+#  SITE SETTINGS — edit these lines, commit, and the site updates.
+# ──────────────────────────────────────────────────────────────
+
+title: The Dialectic                # your journal's name (shown in the masthead)
+tagline: Essays on politics, philosophy, history, cosmology and literature
+description: >-                      # one or two sentences; Google shows this in search results
+  An independent journal of essays on politics, philosophy, history,
+  cosmology and literature.
+
+author:
+  name: Hashir Usman                 # appears in bylines
+  bio: >-                            # appears at the end of every essay
+    Write one or two sentences about yourself here: who you are, what you study,
+    and what you write about.
+
+# The front-page photograph
+hero:
+  image: /assets/img/hero.jpg
+  alt: Auguste Rodin's bronze sculpture The Thinker, seen from below
+  credit: Auguste Rodin, The Thinker      # add the photographer's name here if you know it
+
+# Web address: GitHub Pages fills this in automatically, whatever you name the repository.
+# Only set these if you later buy your own domain, e.g.
+# url: "https://www.thedialectic.com"
+# baseurl: ""
+
+# Quotation shown on the homepage (keep it public domain)
+quote:
+  text: To be aware of limitations is already to be beyond them.
+  source: Georg Wilhelm Friedrich Hegel
+
+# Optional: paste your Google Search Console verification code here
+# webmaster_verifications:
+#   google: PASTE-CODE-HERE
+
+# Optional social links shown in the footer (delete any you don't use)
+social:
+  email: ""                          # e.g. you@example.com
+  x: ""                              # username only, without @
+  linkedin: ""                       # the part after linkedin.com/in/
+
+lang: en
+future: true                         # publish posts even if their date is later today in UTC
+
+# ──────────────────────────────────────────────────────────────
+#  TECHNICAL SETTINGS — you normally don't need to touch these.
+# ──────────────────────────────────────────────────────────────
+
+permalink: /:categories/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  entity_output: as_char
+  footnote_backlink: "↩︎"
+  smart_quotes: ["lsquo", "rsquo", "ldquo", "rdquo"]
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: feed.xml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: "pages"
+    values:
+      layout: page
+
+exclude:
+  - README.md
+  - vendor
+  - .bundle
+  - node_modules

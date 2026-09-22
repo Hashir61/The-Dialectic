@@ -1,0 +1,6 @@
+{%- comment -%} Usage: {% include section-name.html post=post %} — prints the section's display name {%- endcomment -%}
+{%- assign _slug = include.post.categories.first | downcase -%}
+{%- assign _name = "" -%}
+{%- for s in site.data.sections -%}{%- if s.slug == _slug -%}{%- assign _name = s.name -%}{%- endif -%}{%- endfor -%}
+{%- if _name == "" -%}{%- assign _name = include.post.categories.first | capitalize -%}{%- endif -%}
+{{- _name -}}

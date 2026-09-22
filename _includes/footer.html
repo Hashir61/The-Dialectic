@@ -1,0 +1,32 @@
+<footer class="site-footer">
+  <div class="footer-skyline" aria-hidden="true">{% include skyline.svg id="foot" %}</div>
+  <div class="footer-body">
+  <div class="footer-inner wrap">
+    <div class="footer-brand">
+      <a class="footer-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <p>{{ site.tagline }}</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <ul>
+        {%- for s in site.data.sections %}
+        <li><a href="{{ '/' | append: s.slug | append: '/' | relative_url }}">{{ s.name }}</a></li>
+        {%- endfor %}
+      </ul>
+      <ul>
+        <li><a href="{{ '/archive/' | relative_url }}">Archive</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+        <li><a href="{{ '/search/' | relative_url }}">Search</a></li>
+        <li><a href="{{ '/feed.xml' | relative_url }}">RSS feed</a></li>
+      </ul>
+      {%- if site.social.email != "" or site.social.x != "" or site.social.linkedin != "" %}
+      <ul>
+        {%- if site.social.email and site.social.email != "" %}<li><a href="mailto:{{ site.social.email }}">Email</a></li>{% endif %}
+        {%- if site.social.x and site.social.x != "" %}<li><a href="https://x.com/{{ site.social.x }}" rel="me noopener">X</a></li>{% endif %}
+        {%- if site.social.linkedin and site.social.linkedin != "" %}<li><a href="https://www.linkedin.com/in/{{ site.social.linkedin }}" rel="me noopener">LinkedIn</a></li>{% endif %}
+      </ul>
+      {%- endif %}
+    </nav>
+    <p class="colophon">&copy; {{ site.time | date: '%Y' }} {{ site.author.name }}.</p>
+  </div>
+  </div>
+</footer>

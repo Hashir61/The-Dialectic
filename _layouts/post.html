@@ -1,0 +1,79 @@
+---
+layout: default
+---
+{%- assign slug = page.categories.first | downcase -%}
+{%- assign abs_url = page.url | absolute_url -%}
+{%- assign share_text = page.title | append: " " | append: abs_url -%}
+<div class="progress" aria-hidden="true"><span data-progress></span></div>
+
+<article class="essay">
+  <header class="essay-head wrap-text">
+    {% include kicker.html post=page %}
+    <h1 class="essay-title">{{ page.title | escape }}</h1>
+    {%- if page.subtitle %}
+    <p class="essay-dek">{{ page.subtitle | escape }}</p>
+    {%- endif %}
+    <div class="essay-meta">
+      <p class="byline">By <span>{{ page.author | default: site.author.name }}</span></p>
+      <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>, {% include reading-time.html content=content %}{% if page.updated %}. Revised <time datetime="{{ page.updated | date_to_xmlschema }}">{{ page.updated | date: "%-d %B %Y" }}</time>{% endif %}</p>
+    </div>
+  </header>
+
+  {%- if page.image %}
+  <figure class="essay-figure wrap-wide">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' | escape }}" decoding="async">
+    {%- if page.image_caption %}<figcaption>{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</figcaption>{% endif %}
+  </figure>
+  {%- endif %}
+
+  <div class="prose wrap-text{% if page.dropcap == false %} no-dropcap{% endif %}">
+    {{ content }}
+  </div>
+
+  <footer class="essay-foot wrap-text">
+    <div class="share" aria-label="Share this essay">
+      <span class="share-label">Share</span>
+      <button class="share-btn" type="button" data-copy-link="{{ abs_url }}">Copy link</button>
+      <a class="share-btn" href="mailto:?subject={{ page.title | url_encode }}&amp;body={{ abs_url | url_encode }}">Email</a>
+      <a class="share-btn" href="https://x.com/intent/post?text={{ page.title | url_encode }}&amp;url={{ abs_url | url_encode }}" rel="noopener" target="_blank">X</a>
+      <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ abs_url | url_encode }}" rel="noopener" target="_blank">LinkedIn</a>
+      <a class="share-btn" href="https://wa.me/?text={{ share_text | url_encode }}" rel="noopener" target="_blank">WhatsApp</a>
+      <span class="share-status" role="status" aria-live="polite" data-copy-status></span>
+    </div>
+
+    <aside class="author-note" aria-label="About the author">
+      <p class="author-name">{{ page.author | default: site.author.name }}</p>
+      <p>{{ site.author.bio }}</p>
+    </aside>
+  </footer>
+</article>
+
+{%- assign related_count = 0 -%}
+{%- for p in site.posts -%}{%- assign c = p.categories.first | downcase -%}{%- if c == slug and p.url != page.url -%}{%- assign related_count = related_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+
+{%- if related_count > 0 %}
+<section class="related wrap-text" aria-labelledby="related-title">
+  <h2 class="block-title" id="related-title">More in {% include section-name.html post=page %}</h2>
+  <ul class="toc">
+    {%- assign listed = 0 -%}
+    {%- for p in site.posts -%}
+      {%- assign c = p.categories.first | downcase -%}
+      {%- if c != slug or p.url == page.url -%}{%- continue -%}{%- endif -%}
+      {%- if listed >= 4 -%}{%- break -%}{%- endif -%}
+      {%- assign listed = listed | plus: 1 %}
+    <li><a href="{{ p.url | relative_url }}"><span class="toc-title">{{ p.title | escape }}</span><span class="leader" aria-hidden="true"></span><time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%-d %b %Y" }}</time></a></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+{%- if page.previous or page.next %}
+<nav class="pager wrap-text" aria-label="Older and newer essays">
+  {%- if page.previous %}
+  <a class="pager-link pager-prev" href="{{ page.previous.url | relative_url }}" rel="prev"><span class="pager-dir">Older</span><span class="pager-title">{{ page.previous.title | escape }}</span></a>
+  {%- endif %}
+  {%- if page.next %}
+  <a class="pager-link pager-next" href="{{ page.next.url | relative_url }}" rel="next"><span class="pager-dir">Newer</span><span class="pager-title">{{ page.next.title | escape }}</span></a>
+  {%- endif %}
+</nav>
+{%- endif %}

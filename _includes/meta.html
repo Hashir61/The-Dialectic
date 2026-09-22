@@ -1,0 +1,2 @@
+{%- comment -%} date + reading time, written as a phrase {%- endcomment -%}
+<p class="meta"><time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%-d %B %Y" }}</time>, {% include reading-time.html content=include.post.content %}</p>

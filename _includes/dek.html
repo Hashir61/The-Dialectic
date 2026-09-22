@@ -1,0 +1,2 @@
+{%- assign _n = include.words | default: 32 -%}
+{%- if include.post.subtitle -%}{{ include.post.subtitle | escape }}{%- else -%}{{ include.post.excerpt | strip_html | normalize_whitespace | truncatewords: _n }}{%- endif -%}

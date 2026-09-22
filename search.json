@@ -1,0 +1,19 @@
+---
+layout: null
+sitemap: false
+---
+[
+{%- for p in site.posts -%}
+{%- assign c = p.categories.first | downcase -%}
+{%- assign sname = "" -%}{%- for s in site.data.sections -%}{%- if s.slug == c -%}{%- assign sname = s.name -%}{%- endif -%}{%- endfor -%}
+{%- if p.subtitle -%}{%- assign dek = p.subtitle -%}{%- else -%}{%- assign dek = p.excerpt | strip_html | normalize_whitespace | truncatewords: 36 -%}{%- endif -%}
+{
+  "title": {{ p.title | jsonify }},
+  "url": {{ p.url | relative_url | jsonify }},
+  "section": {{ sname | jsonify }},
+  "date": {{ p.date | date: "%-d %B %Y" | jsonify }},
+  "dek": {{ dek | strip | jsonify }},
+  "text": {{ p.content | strip_html | normalize_whitespace | truncatewords: 600, "" | jsonify }}
+}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]
