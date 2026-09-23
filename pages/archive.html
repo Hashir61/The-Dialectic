@@ -3,10 +3,15 @@ layout: default
 title: Archive
 permalink: /archive/
 description: Every essay, newest first.
-hero_image: /assets/img/sections/archive.jpg
-hero_alt: "Domenico di Michelino, Dante and the Divine Comedy, 1465"
-hero_credit: "Domenico di Michelino, Dante and the Divine Comedy, 1465"
 ---
+<section class="section-hero">
+  <img class="section-hero-art" src="{{ '/assets/img/sections/archive.jpg' | relative_url }}" alt="Domenico di Michelino, Dante and the Divine Comedy, 1465">
+  <div class="section-hero-scrim" aria-hidden="true"></div>
+  <div class="section-hero-inner wrap">
+    <h1 class="section-hero-title">Archive</h1>
+  </div>
+  <p class="section-hero-credit">Domenico di Michelino, Dante and the Divine Comedy, 1465</p>
+</section>
 {%- assign total = site.posts | size -%}
 <p class="page-count wrap section-count">{% if total == 1 %}1 essay{% else %}{{ total }} essays{% endif %}</p>
 <div class="list wrap">
