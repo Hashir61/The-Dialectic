@@ -11,8 +11,8 @@
   name: Politics
   description: Power, institutions, law and the arguments over how people should be governed.
   hero_image: /assets/img/sections/politics.jpg
-  hero_alt: Jacques-Louis David, The Lictors Bring to Brutus the Bodies of His Sons
-  hero_credit: Jacques-Louis David, The Lictors Bring to Brutus the Bodies of His Sons, 1789
+  hero_alt:  hero_alt: Cesare Maccari, Cicero Denounces Catiline in the Roman Senate, 1888
+    hero_credit: Cesare Maccari, Cicero Denounces Catiline, 1888
 
 - slug: philosophy
   name: Philosophy
