@@ -31,6 +31,6 @@
     </div>
   </div>
 </header>
-{%- unless page.layout == 'home' or page.layout == 'section' or page.hero_image %}
+{%- unless page.layout == 'home' or page.layout == 'section' or page.hero_image or page.url == '/The-Dialectic/archive/' %}
 <div class="dusk-band" aria-hidden="true">{% include skyline.svg id="top" %}</div>
 {%- endunless %}
