@@ -7,23 +7,14 @@ layout: default
   <div class="section-hero-scrim" aria-hidden="true"></div>
   <div class="section-hero-inner wrap">
     <h1 class="section-hero-title">{{ page.title | escape }}</h1>
-    {%- if page.subtitle %}<p class="section-hero-dek">{{ page.subtitle | escape }}</p>{% endif %}
   </div>
   {%- if page.hero_credit %}<p class="section-hero-credit">{{ page.hero_credit | escape }}</p>{% endif %}
 </section>
-<article class="plain-page">
-  <div class="prose no-dropcap wrap-text" style="padding-top: 2.5rem;">
-    {{ content }}
-  </div>
-</article>
 {%- else %}
 <article class="plain-page">
   <header class="page-head wrap-text">
     <h1 class="page-title display">{{ page.title | escape }}</h1>
-    {%- if page.subtitle %}<p class="page-dek">{{ page.subtitle | escape }}</p>{% endif %}
   </header>
-  <div class="prose no-dropcap wrap-text">
-    {{ content }}
-  </div>
+  <div class="prose no-dropcap wrap-text">{{ content }}</div>
 </article>
 {%- endif %}
