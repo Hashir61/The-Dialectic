@@ -1,43 +1,34 @@
-# The sections of the journal.
-# "slug" is what you type after `category:` at the top of an essay (always lowercase).
-# To add a section: add an entry here AND copy one of the files in /pages/sections/,
-# changing its `section:` and `permalink:` to the new slug.
-#
-# hero_image / hero_alt / hero_credit set the banner photo at the top of that
-# section's page. To change one, replace the file in assets/img/sections/
-# (keep the same file name) or point hero_image at a new path.
-
 - slug: politics
   name: Politics
-  description: Power, institutions, law and the arguments over how people should be governed.
+  description: "Power, institutions, law and the arguments over how people should be governed."
   hero_image: /assets/img/sections/politics.jpg
-   hero_alt: "Cesare Maccari, Cicero Denounces Catiline in the Roman Senate, 1888"
+  hero_alt: "Cesare Maccari, Cicero Denounces Catiline in the Roman Senate, 1888"
   hero_credit: "Cesare Maccari, Cicero Denounces Catiline, 1888"
 
 - slug: philosophy
   name: Philosophy
-  description: An inquiry into existence, knowledge and morality — ontology, epistemology, metaphysics and ethics bent into one question.
+  description: "An inquiry into existence, knowledge and morality — ontology, epistemology, metaphysics and ethics bent into one question."
   hero_image: /assets/img/sections/philosophy.jpg
-  hero_alt: Raphael, The School of Athens
-  hero_credit: Raphael, The School of Athens, 1511
+  hero_alt: "Raphael, The School of Athens, 1511"
+  hero_credit: "Raphael, The School of Athens, 1511"
 
 - slug: history
   name: History
-  description: Empires, revolutions, ideas and the people who lived through them.
+  description: "Empires, revolutions, ideas and the people who lived through them."
   hero_image: /assets/img/sections/history.jpg
-  hero_alt: Jacques-Louis David, The Coronation of Napoleon
-  hero_credit: Jacques-Louis David, The Coronation of Napoleon, 1807
+  hero_alt: "Jacques-Louis David, The Coronation of Napoleon, 1807"
+  hero_credit: "Jacques-Louis David, The Coronation of Napoleon, 1807"
 
 - slug: cosmology
   name: Cosmology
-  description: The origin, scale and fate of the universe, and our small place within it.
+  description: "The origin, scale and fate of the universe, and our small place within it."
   hero_image: /assets/img/sections/cosmology.jpg
-  hero_alt: A dense field of stars against the night sky
-  hero_credit: Photo credit pending — confirm source before publishing
+  hero_alt: "A dense field of stars against the night sky"
+  hero_credit: "Photo credit pending"
 
 - slug: literature
   name: Literature
-  description: Novels, poetry, drama and criticism, read closely.
+  description: "Novels, poetry, drama and criticism, read closely."
   hero_image: /assets/img/sections/literature.jpg
-  hero_alt: Arnold Böcklin, Isle of the Dead
-  hero_credit: Arnold Böcklin, Isle of the Dead, 1883
+  hero_alt: "Arnold Bocklin, Isle of the Dead, 1883"
+  hero_credit: "Arnold Bocklin, Isle of the Dead, 1883"
