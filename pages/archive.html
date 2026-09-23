@@ -3,13 +3,12 @@ layout: default
 title: Archive
 permalink: /archive/
 description: Every essay, newest first.
+hero_image: /assets/img/sections/archive.jpg
+hero_alt: Sandro Botticelli, Chart of Hell, illustrating Dante's Inferno
+hero_credit: Sandro Botticelli, Chart of Hell, c. 1480–1495
 ---
 {%- assign total = site.posts | size -%}
-<header class="page-head wrap">
-  <h1 class="page-title display">Archive</h1>
-  <p class="page-dek">Every essay, newest first.</p>
-  <p class="page-count">{% if total == 1 %}1 essay{% else %}{{ total }} essays{% endif %}</p>
-</header>
+<p class="page-count wrap section-count">{% if total == 1 %}1 essay{% else %}{{ total }} essays{% endif %}</p>
 <div class="list wrap">
   {%- if total == 0 %}
   <div class="empty-state">
