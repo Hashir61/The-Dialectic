@@ -11,9 +11,7 @@ description: >-                      # one or two sentences; Google shows this i
 author:
   name: Hashir Usman                 # appears in bylines
   bio: >-                            # appears at the end of every essay
-        bio: >-
-      These essays proceed by argument and are subject to revision. Correspondence and objection are equally welcome.
-# The front-page photograph
+    These essays proceed by argument and are subject to revision. Correspondence and objection are equally welcome.
 hero:
   image: /assets/img/hero.jpg
   alt: Auguste Rodin's bronze sculpture The Thinker, seen from below
