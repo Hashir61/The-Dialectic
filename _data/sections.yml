@@ -18,14 +18,7 @@
   hero_image: /assets/img/sections/history.jpg
   hero_alt: "Jacques-Louis David, The Coronation of Napoleon, 1807"
   hero_credit: "Jacques-Louis David, The Coronation of Napoleon, 1807"
-
-- slug: cosmology
-  name: Cosmology
-  description: "The origin, scale and fate of the universe, and our small place within it."
-  hero_image: /assets/img/sections/cosmology.jpg
-  hero_alt: "A dense field of stars against the night sky"
-  hero_credit: "Photo credit pending"
-
+  
 - slug: literature
   name: Literature
   description: "Novels, poetry, drama and criticism, read closely."
