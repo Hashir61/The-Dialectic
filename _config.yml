@@ -11,9 +11,8 @@ description: >-                      # one or two sentences; Google shows this i
 author:
   name: Hashir Usman                 # appears in bylines
   bio: >-                            # appears at the end of every essay
-    Write one or two sentences about yourself here: who you are, what you study,
-    and what you write about.
-
+        bio: >-
+      These essays proceed by argument and are subject to revision. Correspondence and objection are equally welcome.
 # The front-page photograph
 hero:
   image: /assets/img/hero.jpg
