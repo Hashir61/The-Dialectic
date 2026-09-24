@@ -35,7 +35,7 @@
   --display: "IM Fell English", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 
   --wrap: 76rem;
-  --text-measure: 36rem;
+  --text-measure: 46rem;
   --gutter: clamp(1.25rem, 4vw, 2.5rem);
 
   color-scheme: light;
@@ -435,7 +435,7 @@ button { font: inherit; color: inherit; }
 .essay-figure figcaption, .prose figcaption { margin-top: .6rem; font-size: .9rem; color: var(--text-2); font-style: italic; }
 
 /* long-form reading typography */
-.prose { font-size: clamp(1.14rem, 1.1rem + .25vw, 1.28rem); line-height: 1.68; hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+.prose { font-size: clamp(1.14rem, 1.1rem + .25vw, 1.28rem); line-height: 1.68; hyphens: none; -webkit-hyphens: none; overflow-wrap: break-word; }
 .prose > * + * { margin-top: 1.15em; }
 .prose h2 { font-size: 1.55em; line-height: 1.2; margin-top: 2.2em; }
 .prose h3 { font-size: 1.22em; line-height: 1.25; margin-top: 1.9em; }
