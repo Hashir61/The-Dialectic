@@ -16,31 +16,45 @@
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
 
+  function sendUtterancesTheme() {
+    const frame = document.querySelector("iframe.utterances-frame");
+    if (!frame) return;
+    frame.contentWindow.postMessage(
+      { type: "set-theme", theme: getTheme() === "dark" ? "github-dark" : "github-light" },
+      "https://utteranc.es"
+    );
+  }
+
+  new MutationObserver(() => sendUtterancesTheme())
+    .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  window.matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => sendUtterancesTheme());
+
   const likedKey = "liked:" + postId;
   const localCountKey = "likes-local:" + postId;
   let liked = false;
   try { liked = localStorage.getItem(likedKey) === "1"; } catch (e) {}
-
-  function render(n) {
-    countEl.textContent = n;
-    btn.setAttribute("aria-pressed", String(liked));
-    btn.disabled = liked;
-    labelEl.textContent = liked ? "Liked" : "Like";
-  }
 
   async function readCount() {
     try { return parseInt(localStorage.getItem(localCountKey) || "0", 10); } catch (e) { return 0; }
   }
 
   let current = await readCount();
+
+  function render(n) {
+    countEl.textContent = n;
+    btn.setAttribute("aria-pressed", String(liked));
+    btn.disabled = false;
+    labelEl.textContent = liked ? "Liked" : "Like";
+  }
+
   render(current);
 
   btn.addEventListener("click", async () => {
-    if (liked) return;
-    liked = true;
-    current += 1;
+    liked = !liked;
+    current = liked ? current + 1 : Math.max(0, current - 1);
     render(current);
-    try { localStorage.setItem(likedKey, "1"); } catch (e) {}
+    try { localStorage.setItem(likedKey, liked ? "1" : "0"); } catch (e) {}
     try { localStorage.setItem(localCountKey, String(current)); } catch (e) {}
   });
 
@@ -52,23 +66,5 @@
   s.setAttribute("crossorigin", "anonymous");
   s.async = true;
   mount.appendChild(s);
-
-  new MutationObserver(() => {
-    const frame = document.querySelector("iframe.utterances-frame");
-    if (!frame) return;
-    frame.contentWindow.postMessage(
-      { type: "set-theme", theme: getTheme() === "dark" ? "github-dark" : "github-light" },
-      "https://utteranc.es"
-    );
-  }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-    const frame = document.querySelector("iframe.utterances-frame");
-    if (!frame) return;
-    frame.contentWindow.postMessage(
-      { type: "set-theme", theme: getTheme() === "dark" ? "github-dark" : "github-light" },
-      "https://utteranc.es"
-    );
-  });
 
 })();
