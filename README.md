@@ -17,4 +17,4 @@ The literary essays treat writing as a form of thinking. They are concerned with
 
 ---
 
-*Built with Jekyll. Hosted on GitHub Pages.*
+*Built with Jekyll. Hosted on GitHub Pages*
