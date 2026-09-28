@@ -14,8 +14,8 @@ image_caption: "Arthur Schopenhauer (1788–1860), photographic portrait."
 .post-wide .fig { margin: .4rem 0 1.1rem; }
 .post-wide .fig img { display: block; width: 100%; height: auto; }
 .post-wide .fig .cap { margin: .5rem 0 0; font-size: .85em; font-style: italic; opacity: .8; line-height: 1.4; }
-.post-wide .fig-right { float: right; width: min(330px, 40%); margin-left: 2rem; }
-.post-wide .fig-left { float: left; width: min(320px, 40%); margin-right: 2rem; }
+.post-wide .fig-right { float: right; width: min(320px, 40%); margin-left: 2rem; }
+.post-wide .fig-left { float: left; width: min(330px, 40%); margin-right: 2rem; }
 .post-wide .fig-sm { width: min(300px, 30%); }
 @media (max-width: 640px) { .post-wide .fig-right, .post-wide .fig-left, .post-wide .fig-sm { float: none; width: min(320px, 100%); margin: 1rem auto; } }
 </style>
